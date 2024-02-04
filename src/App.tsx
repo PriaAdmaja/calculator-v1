@@ -1,35 +1,144 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [result, setResult] = useState<number>(0);
+  const [operation, setOperation] = useState<string[]>([]);
+
+  const generateValue = () => {
+    const string = operation.join('')
+      const result = eval(string);
+      setResult(result)
+  }
+
+  const clear = () => {
+    setResult(0);
+    setOperation([])
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <main className="bg-gunmetal flex h-screen justify-center items-center dark:bg-silver">
+      <section className="h-[600px] w-[320px] bg-anti-flash-white dark:bg-gunmetal flex flex-col gap-10 rounded-2xl py-5 px-3">
+        <section className="">
+          <p className="text-gunmetal dark:text-anti-flash-white text-4xl mt-10 text-right">
+            {Number(result).toLocaleString()}
+          </p>
+          <p className="text-gunmetal h-10 dark:text-silver text-right mt-14">
+            {operation.join("")}
+          </p>
+        </section>
+        <section className="flex-1 flex flex-col gap-4 mt-">
+          <div className="grid grid-cols-4 w-full">
+            <div className="col-span-1 flex justify-center items-center">
+              <button onClick={clear} className="rounded-lg shadow-lg text-savety-orange w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                AC
+              </button>
+            </div>
+            <div className="col-span-1 flex justify-center items-center">
+              <button  className="rounded-lg shadow-lg text-savety-orange w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                Del
+              </button>
+            </div>
+            <div className="col-span-1 flex justify-center items-center">
+              <button className="rounded-lg shadow-lg text-savety-orange w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                %
+              </button>
+            </div>
+            <div className="col-span-1 flex justify-center items-center">
+              <button className="rounded-lg shadow-lg text-savety-orange w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                /
+              </button>
+            </div>
+          </div>
+          <div className="grid grid-cols-4 w-full">
+            <div className="col-span-1 flex justify-center items-center">
+              <button onClick={() => setOperation((prev: string[]) => [...prev, '7'])} className="rounded-lg shadow-lg text-gunmetal dark:text-silver w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                7
+              </button>
+            </div>
+            <div className="col-span-1 flex justify-center items-center">
+              <button className="rounded-lg shadow-lg text-gunmetal dark:text-silver w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                8
+              </button>
+            </div>
+            <div className="col-span-1 flex justify-center items-center">
+              <button className="rounded-lg shadow-lg text-gunmetal dark:text-silver w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                9
+              </button>
+            </div>
+            <div className="col-span-1 flex justify-center items-center">
+              <button className="rounded-lg shadow-lg text-savety-orange w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                x
+              </button>
+            </div>
+          </div>
+          <div className="grid grid-cols-4 w-full">
+            <div className="col-span-1 flex justify-center items-center">
+              <button className="rounded-lg shadow-lg text-gunmetal dark:text-silver w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                4
+              </button>
+            </div>
+            <div className="col-span-1 flex justify-center items-center">
+              <button className="rounded-lg shadow-lg text-gunmetal dark:text-silver w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                5
+              </button>
+            </div>
+            <div className="col-span-1 flex justify-center items-center">
+              <button className="rounded-lg shadow-lg text-gunmetal dark:text-silver w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                6
+              </button>
+            </div>
+            <div className="col-span-1 flex justify-center items-center">
+              <button className="rounded-lg shadow-lg text-savety-orange w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                -
+              </button>
+            </div>
+          </div>
+          <div className="grid grid-cols-4 w-full">
+            <div className="col-span-1 flex justify-center items-center">
+              <button className="rounded-lg shadow-lg text-gunmetal dark:text-silver w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                1
+              </button>
+            </div>
+            <div className="col-span-1 flex justify-center items-center">
+              <button className="rounded-lg shadow-lg text-gunmetal dark:text-silver w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                2
+              </button>
+            </div>
+            <div className="col-span-1 flex justify-center items-center">
+              <button className="rounded-lg shadow-lg text-gunmetal dark:text-silver w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                3
+              </button>
+            </div>
+            <div className="col-span-1 flex justify-center items-center">
+              <button onClick={() => setOperation((prev: string[]) => [...prev, '+'])} className="rounded-lg shadow-lg text-savety-orange w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                +
+              </button>
+            </div>
+          </div>
+          <div className="grid grid-cols-4 w-full">
+            <div className="col-span-1 flex justify-center items-center">
+              <button className="rounded-lg shadow-lg text-gunmetal dark:text-silver w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                0
+              </button>
+            </div>
+            <div className="col-span-1 flex justify-center items-center">
+              <button className="rounded-lg shadow-lg text-gunmetal dark:text-silver w-12 h-12 bg-anti-flash-white dark:bg-gunmetal hover:bg-hover-white active:bg-hover-white dark:hover:bg-hover-dark dark:active:bg-hover-dark">
+                .
+              </button>
+            </div>
+            <div className="col-span-2 flex justify-center items-center">
+              <button
+              onClick={generateValue}
+                className="rounded-lg shadow-lg text-anti-flash-white w-[120px] h-12 bg-savety-orange hover:bg-sandy-brown active:bg-sandy-brown"
+              >
+                =
+              </button>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  );
 }
 
-export default App
+export default App;
